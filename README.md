@@ -1,6 +1,6 @@
 # Ace Combat 2 - Traduccion al español
 
-Traduccion **no oficial** de aficionados de *Ace Combat 2* (PlayStation, version USA) al espanol.
+Traduccion fan por fveralv de *Ace Combat 2* (PlayStation, version USA) al español.
 
 > **En pruebas.** Todo el contenido esta en fase de pruebas y puede haber errores que
 > arruinen la partida (cuelgues, textos que rompen escenas, partidas guardadas
