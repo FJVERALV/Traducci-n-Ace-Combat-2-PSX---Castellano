@@ -1,0 +1,261 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ace Combat 2 - Traduccion al español</title>
+<meta name="description" content="Progreso y parche de la traduccion al espanol de Ace Combat 2 (PlayStation).">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#000;
+    --g:#00e83c;
+    --g-dim:#0a7a25;
+    --g-faint:#04310f;
+    --amber:#ffb300;
+    --red:#ff3b3b;
+    --font:"VT323","Courier New",monospace;
+  }
+  *{box-sizing:border-box}
+  html{background:var(--bg)}
+  body{
+    margin:0;background:var(--bg);color:var(--g);font-family:var(--font);
+    font-size:22px;line-height:1.25;min-height:100vh;overflow-x:hidden;
+  }
+  #rain{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .scan{position:fixed;inset:0;z-index:2;pointer-events:none;
+    background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,0) 2px,rgba(0,0,0,.28) 3px);}
+  main{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:36px 20px 80px}
+  h1,h2{font-weight:normal;margin:0;letter-spacing:2px;text-shadow:0 0 8px rgba(0,232,60,.55)}
+  h1{font-size:54px;line-height:1}
+  .logo{display:block;width:min(100%,440px);height:auto;margin:6px 0 10px;filter:drop-shadow(0 0 14px rgba(0,232,60,.25))}
+  h2{font-size:30px;margin:46px 0 14px}
+  h2::before{content:"> ";color:var(--g-dim)}
+  p{margin:.4em 0}
+  a{color:var(--g);text-decoration:underline}
+  a:hover{background:var(--g);color:#000}
+  .dim{color:var(--g-dim)}
+  .boot .line{white-space:pre-wrap}
+  .cursor{display:inline-block;width:.6em;height:1em;background:var(--g);vertical-align:-2px;animation:blink 1s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .hud{border:2px solid var(--g);padding:18px 20px;margin:14px 0;background:rgba(0,20,4,.72);position:relative}
+  .hud::before,.hud::after{content:"";position:absolute;width:12px;height:12px;border:2px solid var(--g);background:#000}
+  .hud::before{top:-7px;left:-7px}.hud::after{bottom:-7px;right:-7px}
+  .hud .label{color:var(--g-dim);letter-spacing:2px;font-size:20px}
+  .big{font-size:64px;line-height:1;text-shadow:0 0 10px rgba(0,232,60,.6)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+  .bar{height:26px;border:2px solid var(--g);padding:3px;margin:8px 0 4px;display:flex;gap:3px}
+  .bar i{flex:1;background:var(--g-faint)}
+  .bar i.on{background:var(--g);box-shadow:0 0 6px rgba(0,232,60,.7)}
+  table{width:100%;border-collapse:collapse;margin-top:6px}
+  th,td{text-align:left;padding:6px 10px;border-bottom:1px dashed var(--g-faint)}
+  th{color:var(--g-dim);font-weight:normal;letter-spacing:2px}
+  .st{white-space:nowrap}
+  .ok{color:var(--g)}.wip{color:var(--amber)}.todo{color:var(--g-dim)}
+  .btn{display:inline-block;border:2px solid var(--g);padding:10px 22px;text-decoration:none;
+    font-size:28px;letter-spacing:2px;margin:6px 10px 6px 0;background:#000}
+  .btn:hover{background:var(--g);color:#000}
+  ol{padding-left:1.6em;margin:.4em 0}
+  li{margin:.35em 0}
+  code{color:var(--amber)}
+  .warn{border-color:var(--red)}
+  .warn::before,.warn::after{border-color:var(--red)}
+  .warn b{color:var(--red)}
+  .note{border-left:4px solid var(--amber);padding:2px 0 2px 14px;margin:14px 0;color:#ffd27a}
+  footer{margin-top:60px;color:var(--g-dim);font-size:18px;border-top:2px solid var(--g-faint);padding-top:14px}
+  .js .reveal{opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
+  .js .reveal.in{opacity:1;transform:none}
+  @media (max-width:560px){body{font-size:20px}h1{font-size:38px}.big{font-size:48px}}
+  @media (prefers-reduced-motion:reduce){.cursor{animation:none}.reveal{transition:none}}
+</style>
+</head>
+<body>
+<canvas id="rain"></canvas>
+<div class="scan"></div>
+
+<main>
+  <section class="boot" aria-label="Arranque">
+    <div class="line" id="b1"></div>
+    <div class="line" id="b2"></div>
+    <div class="line"><span id="b3"></span><span class="cursor"></span></div>
+  </section>
+
+  <header class="reveal" style="margin-top:34px">
+    <div class="dim">PLAYSTATION &middot; NAMCO &middot; 1997</div>
+    <h1><img class="logo" src="logo.png" alt="Ace Combat 2" width="2000" height="1122"></h1>
+    <div style="font-size:30px;margin-top:6px">TRADUCCION AL ESPA&Ntilde;OL</div>
+    <p class="dim">Proyecto no oficial de aficionados. Progreso y descarga del parche.</p>
+  </header>
+
+  <h2 class="reveal">ESTADO DE LA MISION</h2>
+  <div class="grid reveal">
+    <div class="hud"><div class="label">ESTADO</div><div class="big wip">PRUEBAS</div><div class="dim">version no final</div></div>
+    <div class="hud"><div class="label">PARCHE</div><div class="big">PPF</div><div class="dim">formato de distribucion</div></div>
+  </div>
+
+  <div class="hud warn reveal">
+    <div class="label" style="color:var(--red)">&#9888; AVISO</div>
+    <p>Todo el contenido esta <b>en fase de pruebas</b>. Pueden existir errores que <b>arruinen la partida</b> (cuelgues, textos que rompen escenas, partidas guardadas inutilizables). Juega siempre sobre una copia y no dependas de una partida importante.</p>
+  </div>
+
+  <div class="hud reveal">
+    <div class="label">PROGRESO GENERAL</div>
+    <div class="bar" id="bar" aria-hidden="true"></div>
+    <div><span id="pct">0</span>% &nbsp;<span class="dim">(puede quedar texto sin localizar; todo en pruebas)</span></div>
+  </div>
+
+  <h2 class="reveal">INFORME POR SECCIONES</h2>
+  <div class="hud reveal">
+    <table>
+      <thead><tr><th>SECCION</th><th>ESTADO</th></tr></thead>
+      <tbody>
+        <tr><td>Menus y opciones (Mission / Arsenal / Data / System)</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Comunicaciones de radio</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Briefings y textos de mision</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Pantallas de estado (Power / Defense / Mobility / Stability)</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Rangos, HUD y avisos en pantalla</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Nombres en clave de las misiones y objetivos del mapa</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Revision de estilo y pruebas completas en juego</td><td class="st wip">[ EN CURSO ]</td></tr>
+        <tr><td>Imagenes del HUD y de los menus</td><td class="st todo">[ PENDIENTE ]</td></tr>
+        <tr><td>Doblaje de audios</td><td class="st todo">[ PENDIENTE ]</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="reveal">DESCARGA DEL PARCHE</h2>
+  <div class="hud reveal">
+    <a class="btn" id="dl" href="AceCombat2(ES).ppf">&#9658; DESCARGAR PARCHE</a>
+    <a class="btn" id="repo" href="https://github.com/FJVERALV/Traducci-n-Ace-Combat-2-PSX---Castellano/">&#9658; REPOSITORIO</a>
+    <p class="dim">El parche solo contiene las diferencias con el disco original. No incluye el juego: necesitas tu propia copia legal.</p>
+    <p class="dim">-</p>
+    <p class="dim">¿Te gusta lo que hago? Si crees que mi trabajo merece la pena, puedes apoyarme invitándome a un café. ¡Cualquier aporte me ayuda a seguir creando! ☕</p>
+    <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support me on Ko-fi', '#72a4f2', 'S6P527KUBF');kofiwidget2.draw();</script> 
+  </div>
+
+  <h2 class="reveal">COMO APLICARLO</h2>
+  <div class="hud reveal">
+    <ol>
+      <li>Aplica el archivo <code>.ppf</code> sobre la copia con cualquier aplicador de PPF (por ejemplo PPF-O-Matic).</li>
+      <li>Carga el <code>.cue</code> en tu emulador o consola (si el <code>.cue</code> nombra el <code>.bin</code> con otro nombre, editalo o renombra el archivo).</li>
+    </ol>
+    <div class="note">El parche esta hecho para <b>Ace Combat 2 (USA)</b>, SLUS-00404, imagen <code>.bin</code> de 580.760.544 bytes.<br>
+      SHA-1 del <code>.bin</code> original: <code style="word-break:break-all">A441BB9ACE9434A6D05D9E846D2B23B9523E2867</code><br>
+      Si tu imagen no coincide, el resultado puede quedar corrupto.</div>
+  </div>
+
+  <h2 class="reveal">NOVEDADES</h2>
+  <div class="hud reveal">
+    <div class="label">VERSION 0.2</div>
+    <ul style="margin:.2em 0;padding-left:1.4em">
+      <li>Nombres en clave de las misiones traducidos (HONOR DE PILOTO, ULTIMA BAZA, URBE EN LLAMAS...).</li>
+      <li>Menus, registros, tienda y configuracion del mando que seguian en ingles.</li>
+      <li>Radio reescrita sin abreviaturas y con correcciones de concordancia.</li>
+      <li>Mensajes grandes del HUD y nombres de los objetivos del mapa.</li>
+      <li>Lineas de briefing que faltaban en tres misiones.</li>
+      <li>Corregido: las horas en la radio salian como cuadrados rojos.</li>
+      <li>Corregido: en el briefing durante el vuelo faltaban las primeras letras de algunas lineas ("l terminar", "jetivo").</li>
+      <li>Traducidas las segundas lineas de los objetivos que seguian en ingles ("and all supply facilities"...).</li>
+    </ul>
+  </div>
+
+  <h2 class="reveal">NOTAS</h2>
+  <div class="hud reveal">
+    <ul style="margin:.2em 0;padding-left:1.4em">
+      <li>La tipografia de la radio no tiene digitos, por eso las cifras van escritas con letras (por ejemplo, "a las doce" en lugar de "a las 12").</li>
+      <li>Cada texto traducido cabe en el espacio del original, asi que el disco conserva su tamano y estructura.</li>
+      <li>Los titulos de las canciones y los nombres propios (escuadrones, pilotos, aviones y lugares) se mantienen en ingles.</li>
+      <li>Los textos que forman parte de imagenes (por ejemplo, el cartel "FREE MISSION") aun estan en ingles.</li>
+      <li>Si encuentras un error, texto cortado o un simbolo raro, abre una incidencia en el repositorio indicando la mision y la frase.</li>
+    </ul>
+  </div>
+
+  <footer>
+    PROYECTO DE AFICIONADOS SIN AFILIACION. ACE COMBAT ES MARCA DE SUS RESPECTIVOS PROPIETARIOS.<br>
+    NO SE DISTRIBUYE NINGUNA COPIA DEL JUEGO.
+  </footer>
+</main>
+
+<script>
+(function(){
+  document.documentElement.className += " js";
+  // Cifras de progreso: editar aqui al avanzar
+  var PROGRESS = 70; // % estimado del proyecto
+
+  // Enlaces al repositorio, deducidos de la URL de GitHub Pages (usuario.github.io/repositorio)
+  var m = location.hostname.match(/^([^.]+)\.github\.io$/);
+  var repoPath = location.pathname.split("/").filter(Boolean)[0];
+  var repoUrl = (m && repoPath) ? "https://github.com/" + m[1] + "/" + repoPath : "https://github.com/";
+  document.getElementById("repo").href = repoUrl;
+  document.getElementById("dl").href = repoUrl + "/releases/latest";
+
+  // Barra segmentada
+  var bar = document.getElementById("bar"), N = 40, i, s;
+  for(i=0;i<N;i++){ s=document.createElement("i"); bar.appendChild(s); }
+  var segs = bar.children;
+  var pctEl = document.getElementById("pct");
+
+  function fillBar(){
+    var target = Math.round(N*PROGRESS/100), k = 0;
+    var t = setInterval(function(){
+      if(k<target){ segs[k].className="on"; k++; pctEl.textContent = Math.round(k*100/N); }
+      else { pctEl.textContent = PROGRESS; clearInterval(t); }
+    }, 30);
+  }
+
+  // Arranque tipo terminal
+  function type(el, text, cb){
+    var k=0; (function step(){
+      el.textContent = text.slice(0,k++);
+      if(k<=text.length) setTimeout(step, 22); else if(cb) cb();
+    })();
+  }
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var b1=document.getElementById("b1"), b2=document.getElementById("b2"), b3=document.getElementById("b3");
+  if(reduce){
+    b1.textContent="Memory Allocation... OK"; b2.textContent="Data Transfer... OK"; b3.textContent="Traduccion... OK";
+  } else {
+    type(b1,"Memory Allocation... OK",function(){
+      type(b2,"Data Transfer... OK",function(){ type(b3,"Traduccion... OK"); });
+    });
+  }
+
+  // Aparicion al hacer scroll
+  var els = document.querySelectorAll(".reveal");
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+    },{threshold:.1});
+    els.forEach(function(e){ io.observe(e); });
+  } else els.forEach(function(e){ e.classList.add("in"); });
+  // Seguridad: si el observador no dispara, mostrar todo igualmente
+  setTimeout(function(){ els.forEach(function(e){ e.classList.add("in"); }); }, 2500);
+  setTimeout(fillBar, reduce?0:900);
+
+  // Fondo: cuadraditos verdes tenues, como los glifos sin dibujar de la pantalla de arranque
+  var c = document.getElementById("rain"), x = c.getContext("2d"), cells=[];
+  function size(){ c.width=innerWidth; c.height=innerHeight; }
+  size(); addEventListener("resize", size);
+  function spawn(){
+    cells.push({x:Math.floor(Math.random()*c.width/16)*16, y:Math.floor(Math.random()*c.height/16)*16,
+      a:0, d:1, max:.15+Math.random()*.6, sz:Math.random()<.5?8:6});
+  }
+  function draw(){
+    x.clearRect(0,0,c.width,c.height);
+    if(cells.length<90 && Math.random()<.5) spawn();
+    for(var k=cells.length-1;k>=0;k--){
+      var q=cells[k]; q.a += q.d*0.012;
+      if(q.a>=q.max) q.d=-1;
+      if(q.a<=0 && q.d<0){ cells.splice(k,1); continue; }
+      x.strokeStyle="rgba(0,232,60,"+Math.max(q.a,0)+")";
+      x.lineWidth=2; x.strokeRect(q.x,q.y,q.sz,q.sz);
+    }
+    if(!reduce) requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
+</body>
+</html>
+
