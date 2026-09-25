@@ -4,7 +4,7 @@ Traduccion fan por fveralv de *Ace Combat 2* (PlayStation, version USA) al espa√
 
 > **En pruebas.** Todo el contenido esta en fase de pruebas y puede haber errores que
 > arruinen la partida (cuelgues, textos que rompen escenas, partidas guardadas
-> inutilizables). Juega siempre sobre una copia y no dependas de una partida importante.
+> inutilizables).
 
 Pagina del proyecto con el estado al dia: consulta la pagina de GitHub Pages de este repositorio.
 
@@ -71,5 +71,5 @@ indicando la mision (o pantalla) y la frase exacta.
 
 ## Aviso legal
 
-Proyecto de aficionados sin afiliacion con los propietarios del juego. *Ace Combat* es
+Proyecto de traducci√≥n por fveralv. *Ace Combat* es
 marca de sus respectivos propietarios. No se distribuye ninguna copia del juego.
