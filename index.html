@@ -64,6 +64,15 @@
   .warn::before,.warn::after{border-color:var(--red)}
   .warn b{color:var(--red)}
   .note{border-left:4px solid var(--amber);padding:2px 0 2px 14px;margin:14px 0;color:#ffd27a}
+  .shots{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .shot{margin:0;border:2px solid var(--g);background:rgba(0,20,4,.72);padding:6px}
+  .shot img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;image-rendering:pixelated;background:#000}
+  .shot figcaption{color:var(--g-dim);letter-spacing:2px;font-size:18px;padding:4px 2px 0}
+  .shot.empty img{visibility:hidden}
+  .shot.empty{position:relative}
+  .shot.empty::after{content:"[ SIN SE\00D1 AL ]";position:absolute;left:6px;right:6px;top:6px;aspect-ratio:4/3;
+    display:flex;align-items:center;justify-content:center;color:var(--g-dim);border:1px dashed var(--g-dim)}
+  @media (max-width:560px){.shots{grid-template-columns:1fr}}
   footer{margin-top:60px;color:var(--g-dim);font-size:18px;border-top:2px solid var(--g-faint);padding-top:14px}
   .js .reveal{opacity:0;transform:translateY(6px);transition:opacity .5s,transform .5s}
   .js .reveal.in{opacity:1;transform:none}
@@ -91,19 +100,33 @@
 
   <h2 class="reveal">ESTADO DE LA MISION</h2>
   <div class="grid reveal">
-    <div class="hud"><div class="label">ESTADO</div><div class="big wip">PRUEBAS</div><div class="dim">version no final</div></div>
+    <div class="hud"><div class="label">VERSION</div><div class="big">1.0</div><div class="dim">traduccion completa y probada</div></div>
     <div class="hud"><div class="label">PARCHE</div><div class="big">PPF</div><div class="dim">formato de distribucion</div></div>
+  </div>
+
+  <div class="hud reveal">
+    <div class="label">MISION CUMPLIDA</div>
+    <p>La <b>version 1.0</b> ya esta aqui: todo el juego esta traducido al espa&ntilde;ol, textos y graficos (menus, radio, briefings, pantalla de titulo, HUD de combate, avisos y brujula).</p>
+    <p>Solo falta el <b>doblaje de las voces</b>, que se publicara como un <b>parche aparte</b> y opcional, para quien quiera jugar tambien con las voces en espa&ntilde;ol. Este parche funciona por si solo con las voces originales.</p>
   </div>
 
   <div class="hud warn reveal">
     <div class="label" style="color:var(--red)">&#9888; AVISO</div>
-    <p>Todo el contenido esta <b>en fase de pruebas</b>. Pueden existir errores que <b>arruinen la partida</b> (cuelgues, textos que rompen escenas, partidas guardadas inutilizables). Juega siempre sobre una copia y no dependas de una partida importante.</p>
+    <p>La version 1.0 <b>se ha probado en juego</b>, pero aun asi pueden existir errores que no hayamos visto y que, en el peor caso, <b>arruinen la partida</b> (cuelgues, textos cortados, partidas guardadas inutilizables). Juega sobre una copia y, si encuentras algo, avisa en el repositorio.</p>
   </div>
 
   <div class="hud reveal">
-    <div class="label">PROGRESO GENERAL</div>
+    <div class="label">PROGRESO DE LA TRADUCCION (TEXTOS Y GRAFICOS)</div>
     <div class="bar" id="bar" aria-hidden="true"></div>
-    <div><span id="pct">0</span>% &nbsp;<span class="dim">(puede quedar texto sin localizar; todo en pruebas)</span></div>
+    <div><span id="pct">0</span>% &nbsp;<span class="dim">(el doblaje de voces va en un parche aparte)</span></div>
+  </div>
+
+  <h2 class="reveal">CAPTURAS</h2>
+  <div class="shots reveal">
+    <figure class="shot"><img src="capturas/captura1.png" alt="Captura 1 de la traduccion" loading="lazy" onerror="this.parentNode.classList.add('empty')"></figure>
+    <figure class="shot"><img src="capturas/captura2.png" alt="Captura 2 de la traduccion" loading="lazy" onerror="this.parentNode.classList.add('empty')"></figure>
+    <figure class="shot"><img src="capturas/captura3.png" alt="Captura 3 de la traduccion" loading="lazy" onerror="this.parentNode.classList.add('empty')"></figure>
+    <figure class="shot"><img src="capturas/captura4.png" alt="Captura 4 de la traduccion" loading="lazy" onerror="this.parentNode.classList.add('empty')"></figure>
   </div>
 
   <h2 class="reveal">INFORME POR SECCIONES</h2>
@@ -117,9 +140,10 @@
         <tr><td>Pantallas de estado (Power / Defense / Mobility / Stability)</td><td class="st ok">[ COMPLETO ]</td></tr>
         <tr><td>Rangos, HUD y avisos en pantalla</td><td class="st ok">[ COMPLETO ]</td></tr>
         <tr><td>Nombres en clave de las misiones y objetivos del mapa</td><td class="st ok">[ COMPLETO ]</td></tr>
-        <tr><td>Revision de estilo y pruebas completas en juego</td><td class="st wip">[ EN CURSO ]</td></tr>
-        <tr><td>Imagenes del HUD y de los menus</td><td class="st todo">[ PENDIENTE ]</td></tr>
-        <tr><td>Doblaje de audios</td><td class="st todo">[ PENDIENTE ]</td></tr>
+        <tr><td>Revision de estilo y pruebas completas en juego</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Graficos de menus, titulo y carteles de vuelo</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Rotulos del HUD de combate (avisos, indicadores, brujula)</td><td class="st ok">[ COMPLETO ]</td></tr>
+        <tr><td>Doblaje de voces (parche aparte y opcional)</td><td class="st wip">[ PROXIMAMENTE ]</td></tr>
       </tbody>
     </table>
   </div>
@@ -147,7 +171,14 @@
 
   <h2 class="reveal">NOVEDADES</h2>
   <div class="hud reveal">
-    <div class="label">VERSION 0.2</div>
+    <div class="label">VERSION 1.0</div>
+    <ul style="margin:.2em 0;padding-left:1.4em">
+      <li>Traduccion completa del juego: textos y graficos.</li>
+      <li>HUD de combate traducido: avisos (ATENCION, ASCIENDE, PERDIDA, ALERTA MISIL...), indicadores (VELOC, COMB, MISILES, AVERIA, CA&Ntilde;ON), FUEGO / TOCADO / FALLO, EN RANGO, AUTOPILOTO y brujula con O de oeste.</li>
+      <li>Pantalla de titulo (INICIAR / CARGAR / OPCIONES) y botones de los menus redibujados con letra nitida.</li>
+      <li>Version probada en juego.</li>
+    </ul>
+    <div class="label" style="margin-top:14px">VERSION 0.2</div>
     <ul style="margin:.2em 0;padding-left:1.4em">
       <li>Nombres en clave de las misiones traducidos (HONOR DE PILOTO, ULTIMA BAZA, URBE EN LLAMAS...).</li>
       <li>Menus, registros, tienda y configuracion del mando que seguian en ingles.</li>
@@ -157,6 +188,7 @@
       <li>Corregido: las horas en la radio salian como cuadrados rojos.</li>
       <li>Corregido: en el briefing durante el vuelo faltaban las primeras letras de algunas lineas ("l terminar", "jetivo").</li>
       <li>Traducidas las segundas lineas de los objetivos que seguian en ingles ("and all supply facilities"...).</li>
+      <li>Graficos traducidos: botones de menu y carteles de vuelo (MISION, REPETIR, DEMO...).</li>
     </ul>
   </div>
 
@@ -166,7 +198,8 @@
       <li>La tipografia de la radio no tiene digitos, por eso las cifras van escritas con letras (por ejemplo, "a las doce" en lugar de "a las 12").</li>
       <li>Cada texto traducido cabe en el espacio del original, asi que el disco conserva su tamano y estructura.</li>
       <li>Los titulos de las canciones y los nombres propios (escuadrones, pilotos, aviones y lugares) se mantienen en ingles.</li>
-      <li>Los textos que forman parte de imagenes (por ejemplo, el cartel "FREE MISSION") aun estan en ingles.</li>
+      <li>Las voces siguen en ingles en este parche; el doblaje llegara como parche aparte y opcional.</li>
+      <li>Algunas etiquetas graficas muy peque&ntilde;as se mantienen como en el original (nombres de los blancos en vuelo como STORAGE u OIL TANK e iconos del briefing).</li>
       <li>Si encuentras un error, texto cortado o un simbolo raro, abre una incidencia en el repositorio indicando la mision y la frase.</li>
     </ul>
   </div>
@@ -181,7 +214,7 @@
 (function(){
   document.documentElement.className += " js";
   // Cifras de progreso: editar aqui al avanzar
-  var PROGRESS = 70; // % estimado del proyecto
+  var PROGRESS = 100; // % de textos y graficos (las voces van en un parche aparte)
 
   // Enlaces al repositorio, deducidos de la URL de GitHub Pages (usuario.github.io/repositorio)
   var m = location.hostname.match(/^([^.]+)\.github\.io$/);
@@ -214,10 +247,10 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var b1=document.getElementById("b1"), b2=document.getElementById("b2"), b3=document.getElementById("b3");
   if(reduce){
-    b1.textContent="Memory Allocation... OK"; b2.textContent="Data Transfer... OK"; b3.textContent="Traduccion... OK";
+    b1.textContent="Memory Allocation... OK"; b2.textContent="Data Transfer... OK"; b3.textContent="Traduccion v1.0... OK";
   } else {
     type(b1,"Memory Allocation... OK",function(){
-      type(b2,"Data Transfer... OK",function(){ type(b3,"Traduccion... OK"); });
+      type(b2,"Data Transfer... OK",function(){ type(b3,"Traduccion v1.0... OK"); });
     });
   }
 
