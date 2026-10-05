@@ -1,10 +1,14 @@
 # Ace Combat 2 - Traduccion al español
 
-Traduccion fan por fveralv de *Ace Combat 2* (PlayStation, version USA) al español.
+Traduccion **no oficial** de aficionados de *Ace Combat 2* (PlayStation, version USA) al espanol.
 
-> **En pruebas.** Todo el contenido esta en fase de pruebas y puede haber errores que
-> arruinen la partida (cuelgues, textos que rompen escenas, partidas guardadas
-> inutilizables).
+**Version 1.0**: todo el juego esta traducido (textos y graficos). Solo falta el doblaje
+de las voces, que se publicara como un parche aparte y opcional para quien quiera jugar
+tambien con voces en español; este parche funciona por si solo con las voces originales.
+
+> **Aviso.** La version 1.0 se ha probado en juego, pero aun asi pueden existir errores
+> no detectados que arruinen la partida (cuelgues, textos cortados, partidas guardadas
+> inutilizables). Juega sobre una copia y, si encuentras algo, abre una *issue*.
 
 Pagina del proyecto con el estado al dia: consulta la pagina de GitHub Pages de este repositorio.
 
@@ -18,13 +22,18 @@ Pagina del proyecto con el estado al dia: consulta la pagina de GitHub Pages de 
 | Pantallas de estado (Power / Defense / Mobility / Stability) | Completo |
 | Rangos, HUD y avisos en pantalla | Completo |
 | Nombres en clave de las misiones y objetivos del mapa | Completo |
-| Revision de estilo y pruebas completas en juego | En curso |
-| Imagenes del HUD y de los menus | Pendiente |
-| Doblaje de audios | Pendiente |
-
-Puede quedar texto sin localizar que aun no hayamos visto en juego.
+| Revision de estilo y pruebas completas en juego | Completo |
+| Graficos de menus, titulo y carteles de vuelo | Completo |
+| Rotulos del HUD de combate (velocidad, combustible, avisos, brujula...) | Completo |
+| Doblaje de voces (parche aparte y opcional) | Proximamente |
 
 ## Novedades
+
+### Version 1.0
+- Traduccion completa del juego: textos y graficos.
+- HUD de combate traducido (avisos, indicadores, FUEGO / TOCADO / FALLO, brujula).
+- Pantalla de titulo y botones de los menus redibujados con letra nitida.
+- Version probada en juego.
 
 ### Version 0.2
 - Nombres en clave de las misiones traducidos (HONOR DE PILOTO, ULTIMA BAZA, URBE EN LLAMAS...).
@@ -36,6 +45,12 @@ Puede quedar texto sin localizar que aun no hayamos visto en juego.
 - Corregido: en el briefing durante el vuelo faltaban las primeras letras de algunas
   lineas ("l terminar", "jetivo").
 - Traducidas las segundas lineas de los objetivos que seguian en ingles.
+- Graficos traducidos: botones de los menus (MISION, ESCOLTA, AVIONES, COMPRAR, CAMPAÑA,
+  OPCIONES, CONTROLES...), menu de la pantalla de titulo (INICIAR / CARGAR / OPCIONES) y
+  carteles de vuelo (REPETIR, MISION, ATERRIZAR, VISTA OBJETIVO, DEMO).
+- HUD de combate traducido: avisos (ATENCION, ASCIENDE, PERDIDA, COMB. BAJO, ALERTA MISIL...),
+  indicadores (VELOC, COMB, MISILES, AVERIA, CAÑON), FUEGO / TOCADO / FALLO, EN RANGO,
+  AUTOPILOTO y la brujula con O de oeste (NO, SO, ONO...).
 
 ## Descarga
 
@@ -51,17 +66,6 @@ Necesitas tu propia copia legal.
    | SHA-1 del `.bin` | `A441BB9ACE9434A6D05D9E846D2B23B9523E2867` |
 
 Si tu imagen no coincide con la de la tabla, el resultado puede quedar corrupto.
-
-## Notas de traduccion
-
-- La tipografia de la radio no tiene digitos: las cifras van escritas con letras
-  (por ejemplo, "Enemigo a las doce!" en lugar de "a las 12").
-- Cada texto traducido cabe en el espacio del original, asi que el disco conserva su
-  tamano y estructura. Algunas frases de briefing estan resumidas por ese motivo.
-- Los titulos de las canciones y los nombres propios (escuadrones, pilotos, aviones y
-  lugares) se mantienen en ingles.
-- Los textos que forman parte de imagenes (por ejemplo, el cartel "FREE MISSION") aun
-  estan en ingles.
 
 
 ## Reportar errores
